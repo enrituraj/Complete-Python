@@ -209,3 +209,12 @@ while True:
 
 
 20. **Calculate Average Marks.**
+```python
+math = int(input("enter marks of math : "))
+phy = int(input("enter marks of physics : "))
+che = int(input("enter marks of chemistry : "))
+
+avg_marks = (math + phy + che) // 3
+print(f"average marks is {avg_marks}")
+
+```
