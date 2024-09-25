@@ -129,10 +129,22 @@ else:
 ```
 
 9. **Find all Armstrong numbers between two specified numbers.**
+```python 
 
+    # leave it for now it will completed,
+    #  after function or list comprehension
+
+```
 
 10. **Input a year and determine if it's a leap year.**
+```python 
+year  = int(input("Enter year :"))
 
+if (year % 4 == 0 or year % 100 != 0 ) and year % 400 == 0:
+    print(f"{year} is a leap year")
+else:
+    print(f"{year} is a non-leap year")
+```
 
 11. **Take two numbers as input and display their sum.**
 
@@ -155,6 +167,18 @@ for i in range(1,11):
 ```
 
 13. **Input two numbers and calculate both their HCF and LCM.**
+```python
+import math
+
+num1 = int(input("Enter first number : "))
+num2 = int(input("Enter second number : "))
+
+hcf = math.gcd(num1,num2)
+lcm = abs(num1 * num2) // hcf
+
+print(f"HCF of {num1,num2} is {hcf}")
+print(f"lcm of {num1,num2} is {lcm}")
+```
 
 14. **Continuously take numbers as input until the user enters 'x', then display the total sum of all entered numbers.**
 ```python 
@@ -171,6 +195,13 @@ while True:
 ```
 
 15. **Input a number and print all the factors of that number (use loops).**
+```python 
+n = int(input("enter a no"))
+
+for i in range (1,n+1):
+    if n%i == 0:
+        print(f"{i} is a factor of {n}")
+```
 
 16. **Take integer inputs till the user enters 0 and print the sum of all numbers (HINT: while loop).**
 ```python
@@ -203,9 +234,31 @@ while True:
 
 
 18. **Subtract the Product and Sum of Digits of an Integer.**
+```python
+n = int(input("Enter a number : "))
+temp_num = n
+product = 1
+sum = 0
 
+while temp_num > 0:
+    last_digit = temp_num%10
+    product *= last_digit 
+    sum += last_digit 
+    temp_num = temp_num // 10
+
+print(f"Sum of all the digit of {n} is {sum}")
+print(f"Product of all the digit of {n} is {product}")
+```
 
 19. **Print Fibonacci Series.**
+
+```python
+n = int(input("Print Fibonacci Series less than n : "))
+a ,b = 0,1
+while a< n:
+    print(a)
+    a,b=b,a+b
+```
 
 
 20. **Calculate Average Marks.**
