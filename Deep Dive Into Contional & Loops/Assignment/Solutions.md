@@ -261,7 +261,18 @@
     ```
 
     2. Write a Python program using the `match` statement to determine the type of a triangle (equilateral, isosceles, or scalene) based on the lengths of its sides.
+    ```python
+    def triangle_type(sides):
+        match sides:
+            case (a,b,c) if a==b and a ==c:
+                print("Equilateral triangle")
+            case (a,b,c) if a == b or a==c:
+                print("Isosceles triangle")
+            case _:
+                print("Scalene triangle")
 
+    triangle_type((4,5,9))
+    ```
 
     3. Write a Python program that uses the `match` statement to classify a given day of the week (input as a number 1-7) into "Weekday" or "Weekend."
     ```python
@@ -277,5 +288,40 @@
     ```
 
     4. Write a Python program using the `match` statement to check a student's grade based on their score (A, B, C, D, or F).
-
+    ```python
+    score  = int(input("Enter Score : "))
+    match score:
+        case score if 90 < score <= 100:
+            print(f"Grade A on score {score}")
+        case score if 80 < score <= 90:
+            print(f"Grade B on score {score}")
+        case score if 70 < score <= 80:
+            print(f"Grade C on score {score}")
+        case score if 60 < score <= 70:
+            print(f"Grade D on score {score}")
+        case score if 50 < score <= 60:
+            print(f"Grade E on score {score}")
+        case score if 0 < score <= 50:
+            print(f"Grade F on score {score}")
+        case _:
+            print(f"Invalid score {score}")
+    ```
     5. Write a Python program that uses the `match` statement to map a month number (1-12) to its corresponding season (Spring, Summer, Fall, Winter).
+
+    ```python
+    month  = int(input("Enter month in form (1,12) : "))
+    match month:
+        case 4 | 5 | 6:
+            print("Summer Season")
+        case 7 | 8:
+            print("Rainy Season")
+        case 9|10:
+            print("Fall Season")
+        case 11 | 12 | 1 :
+            print("Winter Season")
+        case 2 | 3:
+            print("Spring Season")
+        case _:
+            print(f"Invalid month choose between (1,12)")
+
+    ```

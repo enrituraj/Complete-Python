@@ -38,7 +38,7 @@ def process_coordinates(coord):
 
 process_coordinates((3, 0))
 
-day = "mondat"
+day = "Monday"
 match day:
         case 'Monday':
             print("Start of the work week!")
