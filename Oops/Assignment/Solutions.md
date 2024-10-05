@@ -185,24 +185,269 @@ cat.make_sound()  # Output: Meow
 ```
 
 7. **Vehicle Inheritance**: Create a base class `Vehicle` with attributes like `speed` and methods like `drive()`. Then, create two subclasses `Car` and `Bike` that inherit from `Vehicle`. Add additional attributes or methods specific to cars and bikes. Create objects of both classes and test their functionality.
+```python
+class Vehicle:
+    def __init__(self, speed):
+        self.speed = speed
+
+    def drive(self):
+        print(f"Driving at {self.speed} km/h")
+
+class Car(Vehicle):
+    def __init__(self, speed, fuel_type):
+        super().__init__(speed)
+        self.fuel_type = fuel_type
+
+    def drive(self):
+        print(f"Car is driving at {self.speed} km/h, Fuel: {self.fuel_type}")
+
+class Bike(Vehicle):
+    def __init__(self, speed, bike_type):
+        super().__init__(speed)
+        self.bike_type = bike_type
+
+    def drive(self):
+        print(f"Bike is riding at {self.speed} km/h, Type: {self.bike_type}")
+
+car = Car(100, "Petrol")
+bike = Bike(60, "Mountain")
+
+car.drive()  
+# Output: Car is driving at 100 km/h, Fuel: Petrol
+bike.drive()  
+# Output: Bike is riding at 60 km/h, Type: Mountain
+
+
+```
+
 
 8. **Employee and Manager**: Write a base class `Employee` with attributes `name`, `id`, and `salary`, and a method `get_details()`. Create a subclass `Manager` that inherits from `Employee` and adds an attribute `department`. Override the `get_details()` method to include department information. Create an object of `Manager` and test it.
+```python
+class Employee:
+    def __init__(self, name, emp_id, salary):
+        self.name = name
+        self.emp_id = emp_id
+        self.salary = salary
+
+    def get_details(self):
+        return f"Name: {self.name}, ID: {self.emp_id}, Salary: {self.salary}"
+
+class Manager(Employee):
+    def __init__(self, name, emp_id, salary, department):
+        super().__init__(name, emp_id, salary)
+        self.department = department
+
+    def get_details(self):
+        return f"{super().get_details()}, Department: {self.department}"
+
+manager = Manager("Suresh", 101, 80000, "HR")
+print(manager.get_details())  
+# Output: Name: Suresh, ID: 101, Salary: 80000, Department: HR
+
+```
+
 
 9. **Shape Inheritance**: Create a base class `Shape` with an abstract method `area()`. Create two subclasses `Circle` and `Square` that implement the `area()` method for their respective shapes. Test the implementation by creating objects of `Circle` and `Square`.
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+
+class Square(Shape):
+    def __init__(self, side):
+        self.side = side
+
+    def area(self):
+        return self.side * self.side
+
+circle = Circle(5)
+square = Square(4)
+
+print(f"Circle Area: {circle.area()}")  
+# Output: Circle Area: 78.5
+print(f"Square Area: {square.area()}")  
+# Output: Square Area: 16
+
+```
+
 
 10. **School System**: Create a base class `Person` with attributes `name` and `age`, and a method `get_info()`. Create subclasses `Student` and `Teacher` that inherit from `Person` and add specific attributes like `grades` for students and `subject` for teachers. Override the `get_info()` method in each subclass. Create objects of both subclasses and call the `get_info()` method.
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def get_info(self):
+        return f"Name: {self.name}, Age: {self.age}"
+
+class Student(Person):
+    def __init__(self, name, age, grades):
+        super().__init__(name, age)
+        self.grades = grades
+
+    def get_info(self):
+        return f"{super().get_info()}, Grades: {self.grades}"
+
+class Teacher(Person):
+    def __init__(self, name, age, subject):
+        super().__init__(name, age)
+        self.subject = subject
+
+    def get_info(self):
+        return f"{super().get_info()}, Subject: {self.subject}"
+
+student = Student("Anita", 20, [85, 90, 92])
+teacher = Teacher("Mr. Sharma", 40, "Mathematics")
+
+print(student.get_info())  
+# Output: Name: Anita, Age: 20, Grades: [85, 90, 92]
+print(teacher.get_info())  
+# Output: Name: Mr. Sharma, Age: 40, Subject: Mathematics
+
+```
+
 
 ### **Polymorphism**
 
 11. **Polymorphic Sound**: Create a base class `Instrument` with a method `play()`. Then, create subclasses `Guitar` and `Piano`, both of which override the `play()` method to print different sounds. Write a function that accepts an `Instrument` object and calls its `play()` method, demonstrating polymorphism.
+```python
+class Instrument:
+    def play(self):
+        print("Instrument is playing")
+
+class Guitar(Instrument):
+    def play(self):
+        print("Strumming the guitar")
+
+class Piano(Instrument):
+    def play(self):
+        print("Playing the piano")
+
+# Test polymorphism
+def play_instrument(instrument):
+    instrument.play()
+
+guitar = Guitar()
+piano = Piano()
+
+play_instrument(guitar)  
+# Output: Strumming the guitar
+play_instrument(piano)   
+# Output: Playing the piano
+
+```
+
 
 12. **Payment System**: Write a base class `Payment` with a method `process_payment()`. Create two subclasses `CreditCardPayment` and `PayPalPayment`, each implementing `process_payment()` differently. Write a function that takes a `Payment` object and processes it, demonstrating polymorphism.
+```python
+class Payment:
+    def process_payment(self):
+        pass
+
+class CreditCardPayment(Payment):
+    def process_payment(self):
+        print("Processing credit card payment")
+
+class PayPalPayment(Payment):
+    def process_payment(self):
+        print("Processing PayPal payment")
+
+# Test polymorphism
+def process(payment):
+    payment.process_payment()
+
+credit_card = CreditCardPayment()
+paypal = PayPalPayment()
+
+process(credit_card)  
+# Output: Processing credit card payment
+process(paypal)       
+# Output: Processing PayPal payment
+
+```
+
 
 13. **Employee Polymorphism**: Create a base class `Employee` with a method `get_salary()`. Create two subclasses `FullTimeEmployee` and `PartTimeEmployee` that override the `get_salary()` method. Demonstrate polymorphism by calculating the salary of both types of employees using a single method.
+```python
+class Employee:
+    def get_salary(self):
+        pass
+
+class FullTimeEmployee(Employee):
+    def get_salary(self):
+        return 50000
+
+class PartTimeEmployee(Employee):
+    def get_salary(self):
+        return 20000
+
+# Test polymorphism
+def print_salary(employee):
+    print(f"Salary: {employee.get_salary()}")
+
+full_time = FullTimeEmployee()
+part_time = PartTimeEmployee()
+
+print_salary(full_time)  
+# Output: Salary: 50000
+print_salary(part_time) 
+ # Output: Salary: 20000
+
+```
+
 
 14. **Transportation Polymorphism**: Create a base class `Transportation` with a method `move()`. Subclasses `Car`, `Plane`, and `Boat` should each have their own `move()` method (e.g., "driving", "flying", and "sailing"). Demonstrate polymorphism by calling `move()` on different transportation objects.
+```python
+class Transportation:
+    def move(self):
+        print("Transportation is moving")
+
+class Car(Transportation):
+    def move(self):
+        print("Car is driving")
+
+class Plane(Transportation):
+    def move(self):
+        print("Plane is flying")
+
+class Boat(Transportation):
+    def move(self):
+        print("Boat is sailing")
+
+# Function to demonstrate polymorphism
+def move_transport(transport):
+    transport.move()
+
+# Create objects
+car = Car()
+plane = Plane()
+boat = Boat()
+
+# Test polymorphism
+move_transport(car)    # Output: Car is driving
+move_transport(plane)  # Output: Plane is flying
+move_transport(boat)   # Output: Boat is sailing
+
+
+```
+
 
 15. **Animal Actions**: Write a base class `Animal` with a method `action()`. Create subclasses `Bird` and `Fish` that override the `action()` method (e.g., birds fly and fish swim). Write a function that takes an `Animal` object and calls its `action()` method, demonstrating polymorphism.
+```python
+
+
+```
 
 ### **Method Overriding and Super()**
 
