@@ -445,6 +445,30 @@ move_transport(boat)   # Output: Boat is sailing
 
 15. **Animal Actions**: Write a base class `Animal` with a method `action()`. Create subclasses `Bird` and `Fish` that override the `action()` method (e.g., birds fly and fish swim). Write a function that takes an `Animal` object and calls its `action()` method, demonstrating polymorphism.
 ```python
+class Animal:
+    def action(self):
+        print("Animal is doing something")
+
+class Bird(Animal):
+    def action(self):
+        print("Bird is flying")
+
+class Fish(Animal):
+    def action(self):
+        print("Fish is swimming")
+
+# Function to demonstrate polymorphism
+def perform_action(animal):
+    animal.action()
+
+# Create objects
+bird = Bird()
+fish = Fish()
+
+perform_action(bird)  
+# Output: Bird is flying
+perform_action(fish)  
+# Output: Fish is swimming
 
 
 ```
@@ -452,13 +476,104 @@ move_transport(boat)   # Output: Boat is sailing
 ### **Method Overriding and Super()**
 
 16. **Smartphone Class**: Create a base class `Phone` with a method `call()` that prints "Making a call." Create a subclass `Smartphone` that overrides the `call()` method to also print "Using an app to make a call." Use the `super()` function to call the parent class method from the subclass.
+```python
+class Phone:
+    def call(self):
+        print("Making a call")
+
+class Smartphone(Phone):
+    def call(self):
+        super().call()  # Call parent method
+        print("Using an app to make a call")
+
+# Create object
+smartphone = Smartphone()
+smartphone.call()  # Output: Making a call
+                   #         Using an app to make a call
+
+```
 
 17. **Vehicle Overriding**: Create a base class `Vehicle` with a method `start()` that prints "Vehicle is starting." Create a subclass `ElectricCar` that overrides `start()` to print "Electric car is starting." Use the `super()` method to call the `Vehicle`'s `start()` method before adding its own functionality.
+```python
+class Vehicle:
+    def start(self):
+        print("Vehicle is starting")
+
+class ElectricCar(Vehicle):
+    def start(self):
+        super().start()  # Call parent method
+        print("Electric car is starting")
+
+# Create object
+electric_car = ElectricCar()
+electric_car.start()  # Output: Vehicle is starting
+                      #         Electric car is starting
+
+```
+
 
 18. **Food Menu**: Write a base class `Food` with a method `display()` that prints "Food Menu". Create a subclass `Dessert` that overrides `display()` to print "Dessert Menu" but also calls the parent class's `display()` using `super()`.
+```python
+class Food:
+    def display(self):
+        print("Food Menu")
+
+class Dessert(Food):
+    def display(self):
+        super().display()  # Call parent method
+        print("Dessert Menu")
+
+# Create object
+dessert = Dessert()
+dessert.display()  # Output: Food Menu
+                   #         Dessert Menu
+
+```
 
 19. **Online Course**: Create a base class `Course` with attributes `title` and `duration` and a method `display_info()` that prints course details. Create a subclass `OnlineCourse` that adds an attribute `platform` and overrides `display_info()` to include the platform name. Use `super()` to call the parent class’s method and extend it.
+```python
+class Course:
+    def __init__(self, title, duration):
+        self.title = title
+        self.duration = duration
+
+    def display_info(self):
+        print(f"Course Title: {self.title}, Duration: {self.duration} hours")
+
+class OnlineCourse(Course):
+    def __init__(self, title, duration, platform):
+        super().__init__(title, duration)
+        self.platform = platform
+
+    def display_info(self):
+        super().display_info()  # Call parent method
+        print(f"Platform: {self.platform}")
+
+# Create object
+online_course = OnlineCourse("Python Programming", 40, "Coursera")
+online_course.display_info()  
+# Output: Course Title: Python Programming, Duration: 40hours
+#         Platform: Coursera
+
+```
+
 
 20. **Company Hierarchy**: Create a base class `Employee` with a method `work()`. Create a subclass `Manager` that overrides the `work()` method but calls the parent class’s `work()` using `super()` to print both the employee’s and manager’s work duties.
+```python
+class Employee:
+    def work(self):
+        print("Employee is working")
 
+class Manager(Employee):
+    def work(self):
+        super().work()  # Call parent method
+        print("Manager is overseeing work")
+
+# Create object
+manager = Manager()
+manager.work()  
+# Output: Employee is working
+#         Manager is overseeing work
+
+```
 ---

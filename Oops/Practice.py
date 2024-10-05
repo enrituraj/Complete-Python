@@ -1,23 +1,22 @@
-# Define base class Animal
-class Animal:
-    # Method that will be overridden in subclasses
-    def make_sound(self):
-        print("Animal makes a sound")
+class Payment:
+    def process_payment(self):
+        pass
 
-# Define the subclass Dog that inherits from Animal
-class Dog(Animal):
-    # Override the make_sound method for Dog
-    def make_sound(self):
-        print("Bark")
+class CreditCardPayment(Payment):
+    def process_payment(self):
+        print("Processing credit card payment")
 
-# Define the subclass Cat that inherits from Animal
-class Cat(Animal):
-    # Override the make_sound method for Cat
-    def make_sound(self):
-        print("Meow")
+class PayPalPayment(Payment):
+    def process_payment(self):
+        print("Processing PayPal payment")
 
-dog = Dog()
-cat = Cat()
+# Test polymorphism
+def process(payment):
+    payment.process_payment()
 
-dog.make_sound()  # Output: Bark
-cat.make_sound()  # Output: Meow
+credit_card = CreditCardPayment()
+paypal = PayPalPayment()
+
+process(credit_card)  
+# Output: Processing credit card payment
+process(paypal)       
